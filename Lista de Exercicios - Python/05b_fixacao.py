@@ -56,11 +56,8 @@ def maior_ponta(nums):
     maior_ponta([1, 2, 3]) -> [3, 3, 3]
     maior_ponta([1, 3, 2]) -> [2, 2, 2]
     """
-    nums_nova = []
-    for i in range(len(nums)):
-        nums_nova.append(nums[0]) if nums[0] > nums[-1] else nums_nova.append(nums[-1])
-
-    return nums_nova
+    new_nums = nums[0] if nums[0] >= nums[-1] else nums[-1]
+    return [new_nums for i in nums]
 
 
 def soma_2_primeiros(nums):
@@ -69,12 +66,9 @@ def soma_2_primeiros(nums):
     dois primeiros elementos.
     Se a lista tiver menos de dois elementos, soma o que for possível.
     """
-    if len(nums) >= 2:
-        return nums[0] + nums[1]
-    elif len(nums) == 1:
-        return nums[0]
-    else:
-        return 0
+    return nums[0] + nums[1] if len(nums) >= 2 else sum(nums)
+
+    
     
     
 def meio_do_caminho(a, b):
@@ -102,8 +96,8 @@ def gago(texto):
     """
     texto = texto.split(' ')
     texto_gago = ''
-    for i in texto:
-        texto_gago += i[0] + '-' + i + ' '
+    for palavra in texto:
+        texto_gago += f'{palavra[0]}-{palavra} '
     return texto_gago.strip()
 
 
