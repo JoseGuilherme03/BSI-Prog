@@ -54,9 +54,9 @@ def aluguel_hotel_urbano(valor_diaria, dias):
     Retorna:
         float: o valor do aluguel, com duas casas decimais
     """
-    totdiaria = valor_diaria * dias
-    porcentangem = (totdiaria * 6) / 100
-    return totdiaria + porcentangem + 65
+    total_diaria = valor_diaria * dias
+    porcentangem = (total_diaria * 6) / 100
+    return total_diaria + porcentangem + 65
 
 
 def acesso_4G(qt_alunos_total, qt_alunos_4G):
@@ -97,7 +97,7 @@ def media_ponderada(prova, trabalho, exercicio):
         float: média ponderada das notas, com 1 casa decimal
     """
     totmedia = (prova * 5 + trabalho * 3 + exercicio * 1) / 9
-    return round(totmedia,1)
+    return round(totmedia, 1)
 
 
 def lan_house(valor_15_minutos, qt_minutos_uso):
@@ -118,6 +118,7 @@ def lan_house(valor_15_minutos, qt_minutos_uso):
     """
     minutos = ceil(qt_minutos_uso / 15)
     valor = minutos * valor_15_minutos
+
     return valor
     
     
