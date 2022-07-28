@@ -1,2 +1,2 @@
 # Python
- Exercicios para o apredizado de Python
+Pequenos projetos e exercicios para o aprendizado de Python
