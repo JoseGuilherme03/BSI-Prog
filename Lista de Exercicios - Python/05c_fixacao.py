@@ -17,9 +17,12 @@ def perto_de_10(n):
     perto_de_10(17) -> False
     perto_de_10(19) -> True
     """
+    if n % 10 == 0 or (n + 2) % 10 == 0 or (n + 1) % 10 == 0 or (n - 2) % 10 == 0 or (n-1) % 10 == 0:
+        return True
+        
+    return False
 
-
-
+    
 
 def soma_maluca(a, b, c):
     """
@@ -29,25 +32,15 @@ def soma_maluca(a, b, c):
     soma_maluca(3, 2, 3) -> 2
     soma_maluca(3, 3, 3) -> 0
     """
-    '''
     soma = 0
+    lista = [a,b,c]
 
-    if a == b == c:
-        return soma
-    elif a == b != c:
-        soma = c
-    elif a == c != b:
-        soma = b
-    elif b == a != c:
-        soma = c
-    elif b == c != a:
-        soma = a
-    elif c == a != c:
-        soma = c
-    elif c == b != a:
-        soma = a'''
+    for n in lista:
+        if lista.count(n) == 1:
+            soma += n
 
-    
+    return soma
+
 
 
 def soma_sortuda(a, b, c):
@@ -58,6 +51,15 @@ def soma_sortuda(a, b, c):
     soma_sortuda(1, 2, 13) -> 3
     soma_sortuda(1, 13, 3) -> 1
     """
+    soma = 0
+    lista = [a,b,c]
+
+    for n in lista:
+        if n == 13:
+            break
+        soma += n
+
+    return soma
 
 
 
@@ -69,19 +71,30 @@ def duplica_caracter(s):
     duplica_caracter('Hi-There') -> 'HHii--TThheerree'
     """
     nova_string = ''
+
     for l in s:
         nova_string += l + l
+
     return nova_string
+
+
 
 def conta_palavra(s, palavra):
     """
     Verifique quantas ocorrências de uma palavra há numa s
     s = 'ana e mariana gostam de banana'
     palavra = 'ana'
-    conta_palavra ('ana e mariana gostam de banana', 'ana') == 4
+    conta_palavra ('anaemarianagostamdebanana', 'ana') == 4
     """
-    return s.count(palavra)
+    contador = 0
 
+    for posicao in range(len(s)):
+        if s[posicao:posicao + len(palavra)].replace(' ','') == palavra:
+            contador += 1
+
+    return contador
+
+        
 
 
 def conta_oi(s):
@@ -101,10 +114,8 @@ def gato_e_rato(s):
     gato_e_rato('gatogato') -> False
     gato_e_rato('1gato1gadorato') -> True
     """
-    gato = s.count('gato')
-    rato = s.count('rato')
 
-    return gato == rato
+    return s.count('gato') == s.count('rato')
 
 
 def conta_bola(s):
@@ -116,9 +127,13 @@ def conta_bola(s):
     conta_bola('bolaxxbola') -> 2
     conta_bola('bocaxxbota') -> 2
     """
-
+    contador = 0
+    for posicao in range(len(s)):
+        palavra = s[posicao:posicao + len('bola')].lower() 
+        if palavra[:2] == 'bo' and palavra[-1] == 'a':
+            contador += 1
+    return contador
     
-
 
 def fim_do_outro(a, b):
     """
@@ -140,7 +155,10 @@ def conta_pares(nums):
     conta_pares([2, 2, 0]) -> 3
     conta_pares([1, 3, 5]) -> 0
     """
-    
+    cont = 0
+    for n in nums:
+        cont += 1 if n % 2 == 0 else 0
+    return cont
 
 
 def soma_13(nums):
@@ -152,6 +170,12 @@ def soma_13(nums):
     soma_13([1, 2, 2, 1, 13]) -> 6
     soma_13([13, 1, 2, 3, 4]) -> 0
     """
+    soma = 0
+    for n in nums:
+        if n == 13:
+            break
+        soma += n
+    return soma
 
 
 def tem_22(nums):
@@ -161,6 +185,13 @@ def tem_22(nums):
     tem_22([1, 2, 1, 2]) -> False
     tem_22([2, 1, 2]) -> False
     """
+    res = 0
+
+    for p in range(len(nums)-1):
+        res += 1 if nums[p] == nums[p+1] == 2 else 0
+
+    return res > 0
+
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
