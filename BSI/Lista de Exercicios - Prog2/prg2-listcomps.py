@@ -8,6 +8,15 @@
 def nomes_com_menos_de_4_letras(lista):
     """ Use uma listcomp para gerar uma lista de homens com nomes de 4 ou menos letras."""
 
+    return  [nome for nome in lista if len(nome) <= 4]
+    
+'''
+    nomes = []
+    for nome in lista:
+        if len(nome) <= 4:
+            nomes.append(nome)
+    return nomes
+'''
 
 def lista_de_nomes_e_inicial(lista):
     """
@@ -17,16 +26,20 @@ def lista_de_nomes_e_inicial(lista):
 
     [('M', 'Mariana'), ('A', 'Ana'), ('P', 'Paula')]
     """
+    return [(nome[0],nome) for nome in lista]
 
 
 def iniciais_e_nomes_incompleto(lista):
     """Gere um dicionário associando iniciais aos nomes de homens."""
+    return {nome[0]:nome for nome in lista}
+
 
 
 def mulher_homem(mulher, homem):
     """4. Use a função zip para gerar uma lista associativa, e com ela carregar
     um dicionário associando cada mulher a um homem. Quantos itens terá o
     dicionário assim produzido?"""
+    return dict(zip(mulher,homem))
 
 
 def produto_cartesiano(homens, mulheres):
@@ -35,18 +48,20 @@ def produto_cartesiano(homens, mulheres):
     Dica: o nome da operação a ser feita neste exercício é produto cartesiano,
     e para fazer isso em uma listcomp ou genexp você precisa usar mais de um
     for dentro da expressão."""
+    return [(h,m) for h in homens for m in mulheres]
 
 
 def produto_cartesiano_filtro(homens, mulheres):
     """6. Repita o exercício 5, acrescentando um filtro com if para remover os
     nomes com menos de 4 letras das duas listas. Quantos casais serão formados?"""
+    return [(h,m) for h in homens if len(h) >= 4 for m in mulheres if len(m) >= 4]
 
 
 def pares_e_divisiveis_por_7(limite_inicial=1067, limite_final=3627):
     """Entre 1067 e 3627 (inclusive), quantos números são pares e
     também divisíveis por 7?
     """
-
+    return len([num for num in range(limite_inicial,limite_final) if num % 2 == 0 and num % 7 == 0])
 
 def duplica_caracter(s):
     """
@@ -55,6 +70,7 @@ def duplica_caracter(s):
     duplica_caracter('AAbb') -> 'AAAAbbbb'
     duplica_caracter('Hi-There') -> 'HHii--TThheerree'
     """
+    return ''.join(letra * 2 for letra in s)
 
 
 def conta_pares(nums):
@@ -64,6 +80,7 @@ def conta_pares(nums):
     conta_pares([2, 2, 0]) -> 3
     conta_pares([1, 3, 5]) -> 0
     """
+    return len([par + 1 for par in nums if par % 2 == 0])
 
 
 def gago(texto):
