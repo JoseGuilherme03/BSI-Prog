@@ -1,0 +1,13 @@
+{
+
+    "facil_cidade":["Itajaí","Penha","Timbó","Milão","Madri"],
+    "intermediario_cidade":["Joinville","Blumenau","Florianópolis","Barcelona","Amsterdã"],
+    "dificil_cidade": ["Rio de Janeiro","São Paulo","Nova York","Barra Velha","Jaraguá do Sul"],
+
+    "facil_fruta":["maçã","limão","uva","pera","figo"],   
+    "intermediario_fruta":["banana","laranja","cereja","ameixa","mamão"],
+    "dificil_fruta":["groselha","framboesa","coco verde","melancia"]
+
+    
+}
+

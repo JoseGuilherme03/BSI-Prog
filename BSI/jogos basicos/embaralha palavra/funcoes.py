@@ -1,9 +1,24 @@
-def cabecalho(titulo):
-    print()
-    print("-=" * len(titulo))
-    print(f"\033[93m            {titulo}        \033[m")
-    print("-=" * len(titulo))
-    print()
+def linha(tam=42):
+    print('-' * tam)
+
+
+def cabecalho(txt):
+    linha()
+    print(txt.center(42))
+    linha()
+
+
+def menu(titulo, lista):
+    from time import sleep
+    cabecalho('JOGO EMBARALHA PALAVRAS')
+    print(titulo)
+    linha()
+    for c,item in enumerate(lista):
+        print(f'{c+1} - {item}')
+    linha()
+    jogador = int(input('Sua opção: '))
+    sleep(0.5)
+    return jogador
 
 
 def embaralha_palavra(palavra_sorteada):

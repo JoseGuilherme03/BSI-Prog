@@ -1,5 +1,5 @@
 def linha(tam=42):
-    return '-' * 42
+    return '-' * tam
 
 
 def cabeçalho(txt):
