@@ -1,23 +1,27 @@
-def linha(tam=42):
-    print('-' * tam)
+def linha(tam=65):
+    print("-" * tam)
 
 
 def cabecalho(txt):
     linha()
-    print(txt.center(42))
+    print(f"\033[33m{txt.center(50)}\033[m")
     linha()
 
 
 def menu(titulo, lista):
     from time import sleep
-    cabecalho('JOGO EMBARALHA PALAVRAS')
+
+    cabecalho("JOGO EMBARALHA PALAVRAS")
     print(titulo)
     linha()
-    for c,item in enumerate(lista):
-        print(f'{c+1} - {item}')
+
+    for c, item in enumerate(lista):
+        print(f"\033[33m[ {c+1} ] -\033[m \033[34m{item}\033[m")
     linha()
-    jogador = int(input('Sua opção: '))
-    sleep(0.5)
+
+    jogador = int(input("\033[32mSua opção: \033[m"))
+    sleep(0.3)
+
     return jogador
 
 
@@ -29,24 +33,31 @@ def embaralha_palavra(palavra_sorteada):
     return "".join(palavra_embaralhada)
 
 
-def verifica_acerto(palavra_correta):
+def verifica_acerto(palavra_embaralhada, palavra_sorteada):
     frases_motivacao = [
         "ERROU!!. Tente novamente, não desista!!.",
         "ERROU!!. Tente novamente, você ira acertar o quanto antes...",
         "ERROU!!. Tente novamente, você vai conseguir acertar...",
-        "ERRO!!. Tente novamente, você quase acertou... ",
+        "ERROU!!. Tente novamente, você quase acertou... ",
     ]
     cont = 0
     tentativas = 5
 
-    while True:
-        jogador = str(input("\nDigite a palavra: ")).lower()
+    cabecalho("INTRUÇÕES DO JOGO")
+    print(f"Você tem {tentativas} tentativas para acertar a palavra.")
+    print(f"A palavra embaralhada é: \033[32m{palavra_embaralhada}\033[m")
+    print("A palavra deve ser escrita conforme embaralhada e sem espaços.")
+    linha()
 
-        if jogador == palavra_correta:
+    while True:
+        jogador = str(input("\nDigite a palavra: ")).strip()
+
+        if jogador == palavra_sorteada:
             print(
                 f"\n\033[32mPARABÉNS!! você acertou a palavra na {cont+1}° tentativa\033[m"
             )
             break
+
         elif cont <= 3:
             print(f"\033[31m{frases_motivacao[cont]}\033[m")
             cont += 1
@@ -55,7 +66,8 @@ def verifica_acerto(palavra_correta):
         tentativas -= 1
 
         if tentativas == 0:
-            print(f"\033[31mGAME OVER!!. A palavra correta era {palavra_correta}\033[m")
-            print()
+            print(
+                f"\033[31mGAME OVER!!.\033[m A palavra correta era {palavra_sorteada}"
+            )
             break
-        print()
+    linha()
