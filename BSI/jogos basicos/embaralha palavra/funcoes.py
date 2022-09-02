@@ -1,3 +1,6 @@
+from ast import While
+
+
 def linha(tam=65):
     print("-" * tam)
 
@@ -19,8 +22,14 @@ def menu(titulo, lista):
         print(f"\033[33m[ {c+1} ] -\033[m \033[34m{item}\033[m")
     linha()
 
-    jogador = int(input("\033[32mSua opção: \033[m"))
-    sleep(0.3)
+    jogador = leia_int(("\033[32mSua opção: \033[m"))
+
+    while True:
+        if jogador >= 1 and jogador <= len(lista):
+            break
+        else:
+            print(f"\033[31mERRO!! Digite uma opção válida\033[m")
+        jogador = leia_int(("\033[32mSua opção: \033[m"))
 
     return jogador
 
@@ -71,3 +80,17 @@ def verifica_acerto(palavra_embaralhada, palavra_sorteada):
             )
             break
     linha()
+
+
+def leia_int(msg):
+    while True:
+        try:
+            num = int(input(msg))
+        except:
+            print("\033[31mERRO!! Por favor digite um número inteiro válido...\033[m")
+        else:
+            return num
+    
+            
+
+
