@@ -11,7 +11,7 @@ import json
 
 
 # Carrega o arquivo json e converte para python
-palavras_json = open("palavras.json", "r")
+palavras_json = open("palavras.json", "r", encoding="utf-8")
 palavras = json.load(palavras_json)
 
 
