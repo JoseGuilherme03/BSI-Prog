@@ -28,7 +28,7 @@ def menu(titulo, lista):
         if jogador >= 1 and jogador <= len(lista):
             break
         else:
-            print(f"\033[31mERRO!! Digite uma opção válida\033[m")
+            print(f"\033[31mERRO!!\033[m Digite uma opção válida")
         jogador = leia_int(("\033[32mSua opção: \033[m"))
 
     return jogador
@@ -87,7 +87,7 @@ def leia_int(msg):
         try:
             num = int(input(msg))
         except:
-            print("\033[31mERRO!! Por favor digite um número inteiro válido...\033[m")
+            print("\033[31mERRO!!\033[m Por favor digite um número inteiro válido...")
         else:
             return num
     
