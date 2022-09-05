@@ -5,18 +5,14 @@
 # Pode colocar a solução diretamente no return, sem criar variáveis.
 
 
+from itertools import count
+
+
 def nomes_com_menos_de_4_letras(lista):
     """ Use uma listcomp para gerar uma lista de homens com nomes de 4 ou menos letras."""
 
     return  [nome for nome in lista if len(nome) <= 4]
-    
-'''
-    nomes = []
-    for nome in lista:
-        if len(nome) <= 4:
-            nomes.append(nome)
-    return nomes
-'''
+
 
 def lista_de_nomes_e_inicial(lista):
     """
@@ -31,14 +27,15 @@ def lista_de_nomes_e_inicial(lista):
 
 def iniciais_e_nomes_incompleto(lista):
     """Gere um dicionário associando iniciais aos nomes de homens."""
-    return {nome[0]:nome for nome in lista}
 
+    return {nome[0]:nome for nome in lista}
 
 
 def mulher_homem(mulher, homem):
     """4. Use a função zip para gerar uma lista associativa, e com ela carregar
     um dicionário associando cada mulher a um homem. Quantos itens terá o
     dicionário assim produzido?"""
+
     return dict(zip(mulher,homem))
 
 
@@ -48,13 +45,14 @@ def produto_cartesiano(homens, mulheres):
     Dica: o nome da operação a ser feita neste exercício é produto cartesiano,
     e para fazer isso em uma listcomp ou genexp você precisa usar mais de um
     for dentro da expressão."""
-    return [(h,m) for h in homens for m in mulheres]
+
+    return [(homem,mulher) for homem in homens for mulher in mulheres]
 
 
 def produto_cartesiano_filtro(homens, mulheres):
     """6. Repita o exercício 5, acrescentando um filtro com if para remover os
     nomes com menos de 4 letras das duas listas. Quantos casais serão formados?"""
-    return [(h,m) for h in homens if len(h) >= 4 for m in mulheres if len(m) >= 4]
+    return [(homem,mulher) for homem in homens if len(homem) >= 4 for mulher in mulheres if len(mulher) >= 4]
 
 
 def pares_e_divisiveis_por_7(limite_inicial=1067, limite_final=3627):
@@ -80,7 +78,7 @@ def conta_pares(nums):
     conta_pares([2, 2, 0]) -> 3
     conta_pares([1, 3, 5]) -> 0
     """
-    return len([par + 1 for par in nums if par % 2 == 0])
+    return len([par for par in nums if par % 2 == 0])
 
 
 def gago(texto):
@@ -88,7 +86,15 @@ def gago(texto):
     gago("preciso tirar dez") -> "p-preciso t-tirar d-dez"
     gago("eu deveria ter estudado mais") -> "e-eu d-deveria t-ter e-estudado m-mais"
     """
+    return "".join([(n_texto[0] + '-' + n_texto + ' ') for n_texto in texto.split()]).strip()
 
+"""
+    novo_texto = ""
+    texto = texto.split()
+    for p in texto:
+        novo_texto += p[0] + '-' + p + ' '
+    return novo_texto.strip()
+"""
 
 def explode_string(s):
     """
@@ -96,13 +102,29 @@ def explode_string(s):
     explode_string('abc') -> 'aababc'
     explode_string('ab') -> 'aab'
     """
+    return ''.join([s[:palavra + 1] for palavra in range(len(s))])
 
+"""
+    palavra = ''
+    for c in range(len(s)):
+        palavra += s[:c + 1]
+    return palavra
+"""
 
 def intercalamento_listas(lista1, lista2):
     """Usando 'lista1' e 'lista2', ambas do mesmo comprimento,
     crie uma nova lista composta pelo
     intercalamento entre as duas."""
 
+    return [item for lista in zip(lista1,lista2) for item in lista]
+
+""" 
+    lista = []
+    for lis in zip(lista1,lista2):
+        for item in lis:
+            lista.append(item)
+    return lista
+"""
 
 def numeros_sortudos(limite_inferior=1, limite_superior=100000):
     """Daniela é uma pessoa muito supersticiosa. Para ela, um número é
@@ -113,7 +135,14 @@ def numeros_sortudos(limite_inferior=1, limite_superior=100000):
     Dica: faça uma função de validação e outra que a chama e
     verifica o intervalo dado
     """
-
+    return len([n for n in range(limite_inferior,limite_superior) if '2' in str(n) and '7' not in str(n)])
+"""
+    lista = []
+    for n in range(limite_inferior,limite_superior):
+        if '2' in str(n) and '7' not in str(n):
+            lista.append(n)
+    return len(lista)
+"""
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
