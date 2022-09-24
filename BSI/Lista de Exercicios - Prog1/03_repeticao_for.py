@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # Lista de exercícios - Estruturas de repetição For
-
 # ATENÇÃO !!!
 # Todos os exercícios devem ser resolvidos com "for".
 # Utilizar "for item in lista" sempre que possível.
