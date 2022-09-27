@@ -1,3 +1,3 @@
 # Python
- Pequenos projetos e exercicios para o aprendizado de Python
+ Vários exercicios feitos na matéria de programação no curso de BSI.
 
